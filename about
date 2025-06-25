@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tentang NM Bakery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background: #f5e5d5;
+      color: #6b4f27;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      min-height: 100vh;
+    }
+    .about-header {
+      background: linear-gradient(90deg, #e2cbb1 0%, #f5e5d5 100%);
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 4px 24px rgba(245, 158, 66, 0.10);
+      padding: 2.5rem 0 2rem 0;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .about-header img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #6b4f27;
+      background: #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(245, 158, 66, 0.10);
+    }
+    .about-section {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px rgba(107, 79, 39, 0.06);
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .about-img {
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px rgba(245, 158, 66, 0.10);
+    }
+    .btn-back {
+      background:#6b4f27;
+      color: #fff;
+      border-radius: 2rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      margin-top: 2rem;
+    }
+    .btn-back:hover {
+      background: #e2cbb1;
+      color: #6b4f27;
+    }
+  </style>
+</head>
+<body>
+  <div class="about-header">
+    <h1 class="fw-bold">About Us</h1>
+    <p class="lead">Premium Cakes, Breads & Pastries for Every Moment</p>
+  </div>
+  <div class="container">
+    <div class="about-section mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+
+          <img src="logonm2.jpg" alt="Toko NM Bakery" class="img-fluid about-img">
+        </div>
+        <div class="col-md-6">
+          <h3>Selamat datang di NM Bakery</h3>
+          <p>
+            Kami adalah bakery online yang spesialis menyajikan bolen premium dengan berbagai rasa menggoda, langsung ke depan pintu rumah Anda. Tanpa toko fisik, NM Bakery hadir untuk memudahkan keluarga Indonesia menikmati kelezatan bolen hangat berkualitas, tanpa harus keluar rumah.
+          </p>
+          <p>
+            Kami percaya bahwa makanan bukan hanya soal rasa, tapi juga tentang kebersamaan. Karena itu, setiap bolen kami dibuat dari bahan pilihan, halal MUI, dan penuh cinta—agar bisa jadi bagian dari momen istimewa Anda.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="about-section h-100 d-flex flex-column justify-content-center align-items-center text-center shadow-sm" style="background: linear-gradient(120deg, #fffbe9 60%, #f5e5d5 100%);">
+          <div class="mb-3" style="font-size:2.5rem; color:#e2cbb1;">
+          </div>
+          <h4 class="fw-bold mb-3" style="color:#6b4f27;">Visi</h4>
+          <ul class="mb-0 ps-3" style="list-style:none;">
+            <li style="font-size:1.08rem;">
+              Menjadi bakery online terdepan di Indonesia yang dikenal karena kualitas produk, inovasi rasa, dan pelayanan pelanggan yang luar biasa.<br>
+              <span class="d-block mt-2">Kami ingin setiap keluarga merasakan kehangatan dan kebersamaan melalui bolen premium kami, menjadikan NM Bakery sebagai pilihan utama untuk momen istimewa.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="about-section h-100 d-flex flex-column justify-content-center align-items-center text-center shadow-sm" style="background: linear-gradient(120deg, #fffbe9 60%, #f5e5d5 100%);">
+          <div class="mb-3" style="font-size:2.5rem; color:#e2cbb1;">
+          </div>
+          <h4 class="fw-bold mb-3" style="color:#6b4f27;">Misi</h4>
+          <ul class="mb-0 ps-3 text-start" style="font-size:1.08rem;">
+            <li class="mb-2"> Menghadirkan produk bolen berkualitas tinggi yang dibuat dari bahan terbaik dan telah tersertifikasi halal oleh MUI.</li>
+            <li class="mb-2"> Membangun pengalaman pelanggan yang praktis dan menyenangkan melalui layanan pemesanan online yang mudah dan cepat.</li>
+            <li class="mb-2"> Menciptakan rasa hangat dan kebersamaan dalam keluarga, lewat produk yang tidak hanya lezat tetapi juga penuh makna.</li>
+            <li class="mb-2"> Menjaga kepercayaan pelanggan dengan pengiriman yang aman, kemasan rapi, dan pelayanan ramah setiap saat.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="index.html" class="btn btn-back px-4"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+    </div>
+  </div>
+</body>
+</html>
