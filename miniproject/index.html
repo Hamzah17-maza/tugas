@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NM Bakery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --primary: #f5e5d5; 
+      --primary-dark: #e2cbb1;
+      --secondary: #fff;
+      --accent: #fbbf24;
+      --text-main: #6b4f27;
+      --text-light: #a78b60;
+      --nav-bg: #fffbe9;
+    }
+    body {
+      background: var(--primary);
+      color: var(--text-main);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 12px rgba(107, 79, 39, 0.06);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: var(--text-main) !important;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 0.7rem;
+      border: 2px solid var(--accent);
+      background: var(--secondary);
+    }
+    .nav-link {
+      color: var(--text-main) !important;
+      margin-right: 1rem;
+      transition: color 0.2s;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: var(--accent) !important;
+    }
+    .cart-btn {
+      background: var(--accent);
+      color: var(--secondary);
+      border: none;
+      box-shadow: 0 2px 8px rgba(245, 158, 66, 0.10);
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .cart-btn:hover {
+      background: #e2cbb1;
+      color: var(--text-main);
+    }
+    .cart-count {
+      background: var(--secondary);
+      color: var(--accent);
+      border-radius: 50%;
+      padding: 0.2em 0.6em;
+      font-size: 0.9em;
+      margin-left: 0.3em;
+      font-weight: bold;
+      border: 1px solid var(--accent);
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+    .hero-section {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 4px 24px rgba(245, 158, 66, 0.10);
+      padding: 2.5rem 0 2rem 0;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero-section h1 {
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.2em;
+      color: var(--text-main);
+    }
+    .hero-section p {
+      color: var(--text-light);
+      font-size: 1.15rem;
+      margin-bottom: 0;
+    }
+    .category-bar {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem 0 1.5rem 0;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+    .category-btn {
+      background: var(--secondary);
+      border: 1.5px solid var(--primary-dark);
+      color: var(--text-main);
+      border-radius: 2rem;
+      padding: 0.4rem 1.3rem;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
+      outline: none;
+    }
+    .category-btn.active, .category-btn:hover {
+      background: var(--accent);
+      color: var(--secondary);
+      border: 1.5px solid var(--accent);
+    }
+    .cake-img {
+      height: 160px;
+      object-fit: cover;
+      border-radius: 1rem 1rem 0 0;
+      width: 100%;
+      background: var(--primary-dark);
+      transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    }
+    .card {
+      border: none;
+      border-radius: 1rem;
+      background: var(--secondary);
+      box-shadow: 0 2px 16px rgba(107, 79, 39, 0.06);
+      transition: box-shadow 0.3s, transform 0.3s;
+      overflow: hidden;
+      min-height: 340px;
+
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      animation: cardZoomIn 0.6s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    @keyframes cardZoomIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.03);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(107, 79, 39, 0.13);
+      transform: translateY(-6px) scale(1.04); 
+    }
+    .card:hover .cake-img {
+      transform: scale(1.11); 
+      box-shadow: 0 4px 24px rgba(245,158,66,0.13);
+    }
+ 
+    .btn-outline-warning:active {
+      animation: btnPop 0.2s;
+    }
+    @keyframes btnPop {
+      0% { transform: scale(1);}
+      50% { transform: scale(1.12);}
+      100% { transform: scale(1);}
+    }
+    .modal-content {
+      border-radius: 1.2rem;
+      background: var(--secondary);
+    }
+    .modal-header {
+      border-bottom: none;
+    }
+    .modal-footer {
+      border-top: none;
+    }
+    .list-group-item {
+      border: none;
+      border-radius: 0.7rem;
+      margin-bottom: 0.3rem;
+      background: var(--primary);
+      color: var(--text-main);
+    }
+    .fw-bold.text-warning {
+      color: var(--accent) !important;
+    }
+  
+    @media (max-width: 576px) {
+      .navbar-brand img {
+        width: 36px;
+        height: 36px;
+        margin-right: 0.5rem;
+      }
+      .hero-section {
+        padding-top: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        NM BAKERY
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menuList">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang Kami</a></li>
+        </ul>
+        <button class="btn cart-btn ms-lg-3" data-bs-toggle="modal" data-bs-target="#cartModal">
+          <i class="bi bi-cart4"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="fw-bold">A Taste of the Finest Food!</h1>
+      <p class="lead">Nikmati berbagai pilihan kue, roti, dan pastry premium khas NM Bakery.</p>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <div class="category-bar" id="categoryBar">
+      <button class="category-btn active" data-category="all">Semua</button>
+      <button class="category-btn" data-category="Brownies">Brownies</button>
+      <button class="category-btn" data-category="Cakes">Cakes</button>
+      <button class="category-btn" data-category="Breads">Breads</button>
+      <button class="category-btn" data-category="Pastries">Pastries</button>
+    </div>
+  </div>
+
+
+  <div class="container pb-5">
+    <div class="row" id="menuList">
+
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="orderForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Keranjang Belanja</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group mb-3" id="cartItems">
+          </ul>
+          <div class="mb-3">
+            <label for="customerName" class="form-label">Nama Pemesan</label>
+            <input type="text" class="form-control" id="customerName" required>
+          </div>
+          <div class="mb-3">
+            <label for="customerPhone" class="form-label">No. HP</label>
+            <input type="tel" class="form-control" id="customerPhone" required>
+          </div>
+          <div class="mb-3">
+            <label for="orderNote" class="form-label">Catatan untuk Penjual (opsional)</label>
+            <textarea class="form-control" id="orderNote" rows="2" placeholder="Contoh: Bolennya isi coklat, dikirim besok, dsb."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span class="fw-bold me-auto">Total: Rp <span id="cartTotal">0</span></span>
+          <button type="submit" class="btn btn-success rounded-pill px-4">Order Sekarang</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    let menu = [
+
+      { id: 1, name: "Fudgy Brownie (Small)", price: 26000, img: "fsmall.jpeg", category: "Brownies" },
+      { id: 2, name: "Fudgy Brownie (Large)", price: 50000, img: "flarge.jpeg", category: "Brownies" },
+      { id: 3, name: "Steamed Brownie (10x21)", price: 34000, img: "steam.jpeg", category: "Brownies" },
+
+      { id: 4, name: "Chiffon Cake", price: 45000, img: "chifon.jpeg", category: "Cakes" },
+      { id: 5, name: "Cheese Cake", price: 50000, img: "cheesecake.jpg", category: "Cakes" },
+      { id: 6, name: "Banana Cake", price: 35000, img: "banana.jpeg", category: "Cakes" },
+      { id: 7, name: "Bolu Jadul", price: 35000, img: "jadul.jpeg", category: "Cakes" },
+      { id: 8, name: "Bolu Pandan", price: 50000, img: "pandan.jpeg", category: "Cakes" },
+
+      { id: 9, name: "Thai Milk Bun", price: 20000, img: "milkbun.jpeg", category: "Breads" },
+      { id: 10, name: "Floss Roll", price: 7000, img: "abon.jpeg", category: "Breads" },
+      { id: 11, name: "Garlic Bread", price: 6000, img: "garlic.jpeg", category: "Breads" },
+      { id: 12, name: "Strawberry Crumble", price: 7000, img: "strby.jpeg", category: "Breads" },
+
+      { id: 13, name: "Bollen", price: 28000, img: "bolenpisang.jpeg", category: "Pastries" },
+      { id: 14, name: "Horn Pastry", price: 3500, img: "horn.jpeg", category: "Pastries" },
+      { id: 15, name: "Choux (Soes)", price: 2000, img: "soes.jpeg", category: "Pastries" },
+      { id: 16, name: "Curry Puff", price: 5000, img: "puff.jpeg", category: "Pastries" }
+    ];
+
+    let cart = [];
+    let currentCategory = "all";
+
+    function renderMenu() {
+      const menuList = document.getElementById('menuList');
+      menuList.innerHTML = '';
+      let filtered = menu;
+      if (currentCategory !== "all") {
+        filtered = menu.filter(item => item.category === currentCategory);
+      }
+      if (filtered.length === 0) {
+        menuList.innerHTML = `<div class="col-12 text-center text-muted py-5">Menu tidak tersedia.</div>`;
+        return;
+      }
+      filtered.forEach((item, idx) => {
+        menuList.innerHTML += `
+          <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card shadow-sm h-100">
+              <img src="${item.img}" class="cake-img" alt="${item.name}">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <input type="text" class="form-control form-control-sm fw-bold border-0 bg-transparent p-0" style="max-width:65%;" value="${item.name}" onchange="updateMenuName(${menu.indexOf(item)}, this.value)">
+                  <span class="fw-bold text-warning">Rp ${item.price.toLocaleString()}</span>
+                </div>
+                <button class="btn btn-outline-warning mt-auto w-100" onclick="addToCart(${item.id})">
+                  <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function updateMenuName(idx, newName) {
+  menu[idx].name = newName;
+      renderMenu();
+    }
+
+    function addToCart(id) {
+      const item = menu.find(m => m.id === id);
+      const cartItem = cart.find(c => c.id === id);
+      if (cartItem) {
+        cartItem.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      document.getElementById('cartCount').textContent = cart.reduce((a, c) => a + c.qty, 0);
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.price * item.qty;
+        cartItems.innerHTML += `
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <span class="fw-bold">${item.name}</span>
+              <span class="text-muted">x${item.qty}</span>
+            </div>
+            <div>
+              <span>Rp ${(item.price * item.qty).toLocaleString()}</span>
+              <button type="button" class="btn btn-sm btn-outline-danger ms-2" onclick="removeFromCart(${item.id})">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </li>
+        `;
+      });
+      document.getElementById('cartTotal').textContent = total.toLocaleString();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartCount();
+      renderCart();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderMenu();
+      updateCartCount();
+
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentCategory = this.dataset.category;
+          renderMenu();
+        });
+      });
+
+      const cartModal = document.getElementById('cartModal');
+      cartModal.addEventListener('show.bs.modal', renderCart);
+
+      document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (cart.length === 0) {
+          alert('Keranjang masih kosong!');
+          return;
+        }
+        const name = document.getElementById('customerName').value.trim();
+        const phone = document.getElementById('customerPhone').value.trim();
+        const note = document.getElementById('orderNote').value.trim();
+        if (!name || !phone) {
+          alert('Silakan isi nama dan nomor HP!');
+          return;
+        }
+        let message = `Terima kasih, ${name}! Pesanan Anda telah diterima.\nTotal: Rp ${cart.reduce((a, c) => a + c.price * c.qty, 0).toLocaleString()}`;
+        if (note) message += `\nCatatan: ${note}`;
+        alert(message);
+        cart = [];
+        updateCartCount();
+        renderCart();
+        document.getElementById('orderForm').reset();
+        const modal = bootstrap.Modal.getInstance(cartModal);
+        modal.hide();
+      });
+    });
+  </script>
+  <div class="footer"> </div>
+  <footer class="text-center py-4">
+    <p class="mb-0">© 2025 NM Bakery. All rights reserved.</p>
+</body>
+</html>
