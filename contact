@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontak NM Bakery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background: #f5e5d5;
+      color: #6b4f27;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      min-height: 100vh;
+    }
+    .contact-header {
+      background: linear-gradient(90deg, #e2cbb1 0%, #f5e5d5 100%);
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 4px 24px rgba(245, 158, 66, 0.10);
+      padding: 2.5rem 0 2rem 0;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .contact-header img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #6b4f27;
+      background: #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(245, 158, 66, 0.10);
+    }
+    .contact-section {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px rgba(107, 79, 39, 0.06);
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .contact-info-icon {
+      font-size: 2rem;
+      color: #6b4f27;
+      margin-right: 1rem;
+      vertical-align: middle;
+    }
+    .btn-back {
+      background: e2cbb1;
+      color: #6b4f27;
+      border-radius: 2rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      margin-top: 2rem;
+    }
+    .btn-back:hover {
+      background: #e2cbb1;
+      color: #6b4f27;
+    }
+    .social-icon {
+      font-size: 1.7rem;
+      color: #6b4f27;
+      margin-right: 0.7rem;
+      transition: color 0.2s;
+    }
+    .social-icon:hover {
+      color: #e2cbb1;
+    }
+    .form-control:focus {
+      border-color: #e2cbb1;
+      box-shadow: 0 0 0 0.15rem #6b4f27;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-header">
+    <h1 class="fw-bold">Kontak NM Bakery</h1>
+    <p class="lead">Kami siap membantu kebutuhan dan pertanyaan Anda!</p>
+  </div>
+  <div class="container">
+    <div class="contact-section mb-4">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h4 class="fw-bold mb-3">Info Kontak</h4>
+          <div class="mb-3">
+            <i class="bi bi-telephone contact-info-icon"></i>
+            <span class="fw-semibold">+62 851-3800-3533</span>
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-geo-alt contact-info-icon"></i>
+            <span>Jl. Kampung Baru Gg. Raden Santri RT.1 RW.1</span>
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-clock contact-info-icon"></i>
+            <span>Setiap hari: 07.00 - 22.00 WIB</span>
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-envelope contact-info-icon"></i>
+            <span>nmcakepastry@gmail.com</span>
+          </div>
+          <div class="mb-3">
+            <a href="https://wa.me/6285138003533" target="_blank" class="social-icon" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://instagram.com/nmcakepastry" target="_blank" class="social-icon" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="mailto:nmcakepastry@gmail.com" class="social-icon" title="Email"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold mb-3">Kirim Pesan</h4>
+          <form>
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="nama" placeholder="Nama Anda" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="email@anda.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="pesan" class="form-label">Pesan</label>
+              <textarea class="form-control" id="pesan" rows="3" placeholder="Tulis pesan Anda..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success rounded-pill px-4">Kirim</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="index.html" class="btn btn-back px-4"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+    </div>
+  </div>
+</body>
+</html>
